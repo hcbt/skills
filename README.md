@@ -1,11 +1,6 @@
 # skills
 
-Personal Claude Code skills. Develop them here, then install each one into
-`~/.claude/skills/` with a symlink:
-
-```
-ln -s ~/src/projects/skills/skills/<skill-name> ~/.claude/skills/<skill-name>
-```
+Personal Claude Code skills.
 
 ## Skills
 
