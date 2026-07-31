@@ -1,20 +1,23 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "name": "hcbt-skills",
-  "description": "hcbt's personal Claude Code plugins.",
+  "name": "hcbt",
   "owner": {
     "name": "hcbt",
     "url": "https://github.com/hcbt"
   },
+  "description": "hcbt's skills for real engineering, as an installable Claude Code plugin.",
   "plugins": [
     {
-      "name": "ste-writing-style",
-      "source": "./plugins/ste-writing-style",
-      "description": "Puts ASD-STE100 Simplified Technical English into the system prompt as an always-on output style.",
-      "author": {
-        "name": "hcbt"
-      },
-      "keywords": ["writing", "output-style", "ste", "simplified-technical-english"]
+      "name": "hcbt-skills",
+      "source": "./",
+      "description": "hcbt's agent skills, plus an always-on ASD-STE100 Simplified Technical English output style.",
+      "category": "engineering",
+      "keywords": [
+        "engineering",
+        "skills",
+        "writing",
+        "output-style",
+        "ste"
+      ]
     }
   ]
 }
