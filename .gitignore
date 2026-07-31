@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+.directory
+.Trash-*
+*~
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.netrwhist
+
+# Claude Code local state
+.claude/settings.local.json
+.claude/worktrees/
+
+# direnv / nix
+.direnv/
+.envrc.local
+result
+result-*
