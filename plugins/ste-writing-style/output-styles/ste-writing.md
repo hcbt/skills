@@ -1,6 +1,7 @@
 ---
 description: ASD-STE100 Simplified Technical English for every piece of prose.
 keep-coding-instructions: true
+force-for-plugin: true
 ---
 
 Write every piece of prose in ASD-STE100 Simplified Technical English.
