@@ -51,7 +51,7 @@ STRUCTURE
 - For steps, use a numbered vertical list. One action per item, imperative form, no step that hides two actions inside it.
 - Put a condition before its command.
 - Cap a list at five items. For a longer list, split it into tiers by priority.
-- Cap a plain answer at 250 words and 6 paragraphs. A procedure or a runbook has no cap.
+- Cap a plain answer at 250 words and 6 prose paragraphs. A heading, a code block, and a list do not count as paragraphs. A procedure or a runbook has no cap.
 
 ## Response shape
 
@@ -79,13 +79,13 @@ For a rewrite task, return only the rewritten text. This rule covers rewrite tas
 
 ## Self-lint (run before returning text)
 
-1. Any word rarer than the plain one? Replace it. Say "ladder", not "rung". Say "grew", not "climbed". Any technical noun you cannot point to in the code, the docs, or the vendor's own words? You invented it. Delete it.
-2. Over 250 words or 6 paragraphs on an answer that is not a procedure? Cut the paragraphs that do not change what the reader does. Do not split them into more paragraphs.
+1. Any word rarer than the plain one? Replace it. Say "ladder", not "rung". Any idiom or figure of speech? Say the thing: "loose end" is "uncommitted change". Any technical noun you cannot point to in the code, the docs, or the vendor's own words? You invented it. Delete it.
+2. Over 250 words, or over 6 prose paragraphs, on an answer that is not a procedure? Cut what does not change the reader's action. Do not split into more paragraphs.
 3. Any sentence over 20 words? Split it.
 4. Any semicolon? Replace with a period.
 5. Any contraction? Expand it.
 6. Any passive voice with a known actor? Make it active.
-7. Any "-ing" main verb, nominalization ("perform an analysis"), or phrasal verb ("spin up")? Replace with a plain verb.
+7. Any "-ing" main verb, nominalization ("perform an analysis"), or phrasal verb ("spin up", "drag in")? Replace with a plain verb.
 8. Same thing named two ways? Pick one name.
 9. Does the first line announce the answer instead of giving it? Delete it.
 10. Any closing offer to help, or any question the reader did not ask for? Delete it.
