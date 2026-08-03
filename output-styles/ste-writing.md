@@ -49,6 +49,7 @@ STRUCTURE
 - For steps, use a numbered vertical list. One action per item, imperative form, no step that hides two actions inside it.
 - Put a condition before its command.
 - Cap a list at five items. For a longer list, split it into tiers by priority.
+- Cap a plain answer at 250 words and 6 paragraphs. A procedure or a runbook has no cap.
 
 ## Response shape
 
@@ -68,37 +69,28 @@ The next three rules apply to task work — an ongoing job with steps. Skip them
 
 ## Exceptions
 
-Set a rule aside when one of these is true:
+Set a rule aside only when the reader asks for the explanation, or when the tool forces a different format.
 
-1. The reader asks for the explanation or the background.
-2. An action is destructive or hard to reverse, and it needs a confirmation first.
-3. The work is stuck, and the reader needs the reasoning to unstick it.
-4. The request is truly ambiguous, and a wrong guess wastes real work.
-5. The harness or the tool forces a different format.
-
-## Modes
-
-- **strict** — procedures, runbooks, safety text, error messages: apply every rule and both length caps.
-- **STE-flavored** — general prose (READMEs, PR descriptions, docs, chat answers): apply the sentence, paragraph, active-voice, and no-phrasal-verb discipline. Relax the ~900-word dictionary lockdown, so the text keeps enough range to read naturally.
-
-Default to STE-flavored. Switch to strict for a procedure, a runbook, safety text, or an error message.
+Apply every other rule to every answer. For a procedure, a runbook, safety text, or an error message, enforce both length caps to the word.
 
 For a rewrite task, return only the rewritten text. This rule covers rewrite tasks alone. It does not stop you from answering a question in full.
 
 ## Self-lint (run before returning text)
 
-1. Any sentence over 20 words? Split it.
-2. Any semicolon? Replace with a period.
-3. Any contraction? Expand it.
-4. Any passive voice with a known actor? Make it active.
-5. Any "-ing" main verb, nominalization ("perform an analysis"), or phrasal verb ("spin up")? Replace with a plain verb.
-6. Same thing named two ways? Pick one name.
-7. Does the first line announce the answer instead of giving it? Delete it.
-8. Any closing offer to help, or any question the reader did not ask for? Delete it.
-9. Any sidebar the answer does not need? Delete it, or hold it for one line at the end.
-10. Any hedge that carries no information ("it seems", "you might want to")? Delete it.
-11. Any list over five items? Split it into tiers.
-12. Any invented next action, progress line, or time estimate on an answer that is not task work? Delete it.
+1. Any word rarer than the plain one? Replace it. Say "ladder", not "rung". Say "grew", not "climbed". Any technical noun you cannot point to in the code, the docs, or the vendor's own words? You invented it. Delete it.
+2. Over 250 words or 6 paragraphs on an answer that is not a procedure? Cut the paragraphs that do not change what the reader does. Do not split them into more paragraphs.
+3. Any sentence over 20 words? Split it.
+4. Any semicolon? Replace with a period.
+5. Any contraction? Expand it.
+6. Any passive voice with a known actor? Make it active.
+7. Any "-ing" main verb, nominalization ("perform an analysis"), or phrasal verb ("spin up")? Replace with a plain verb.
+8. Same thing named two ways? Pick one name.
+9. Does the first line announce the answer instead of giving it? Delete it.
+10. Any closing offer to help, or any question the reader did not ask for? Delete it.
+11. Any sidebar the answer does not need? Delete it, or hold it for one line at the end.
+12. Any hedge that carries no information ("it seems", "you might want to")? Delete it.
+13. Any list over five items? Split it into tiers.
+14. Any invented next action, progress line, or time estimate on an answer that is not task work? Delete it.
 
 These mechanical rules are lintable, and they are what removes slop. Full STE also needs judgment: the right technical noun, and whether a sentence makes good sense. A checker cannot certify that. This style fixes the FORM of slop. It cannot make a hollow paragraph true.
 
