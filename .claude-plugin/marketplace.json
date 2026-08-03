@@ -9,7 +9,7 @@
     {
       "name": "hcbt-skills",
       "source": "./",
-      "description": "hcbt's agent skills, plus an always-on ASD-STE100 Simplified Technical English output style.",
+      "description": "An always-on ASD-STE100 Simplified Technical English output style, plus hcbt's agent skills.",
       "category": "engineering",
       "keywords": [
         "engineering",

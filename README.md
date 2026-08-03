@@ -3,9 +3,8 @@
 A Claude Code plugin marketplace with one plugin: **hcbt-skills**.
 
 The repository root *is* the plugin. [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)
-lists a single entry whose source is `./`, so
-[`skills/`](skills) and [`output-styles/`](output-styles) install together from
-one clone.
+lists a single entry whose source is `./`, so `skills/` and
+[`output-styles/`](output-styles) install together from one clone.
 
 ## Install
 
@@ -26,32 +25,27 @@ marketplace and set the `enabledPlugins` key. One marketplace, one plugin key.
 
 ## What the plugin ships
 
-### Skills
-
-Claude loads a skill on demand, when the task matches its description.
-
-- **[ste-writing](skills/ste-writing/SKILL.md)** — write or rewrite one piece of
-  prose in ASD-STE100 Simplified Technical English. Two modes: strict for
-  procedures, runbooks, safety text, and error messages, STE-flavored for
-  general prose. It covers docs, READMEs, pull-request text, commit bodies,
-  release notes, and comments. It does not cover code, identifiers, or command
-  syntax.
-
 ### Output style
 
 An output style replaces Claude's default response style for the whole session.
 The user selects it once, and it stays on.
 
-- **[ste-writing](output-styles/ste-writing.md)** — the same STE rules as the
-  skill, applied to every answer instead of on demand. Two flags shape it:
-  `keep-coding-instructions: true` keeps the normal software-engineering
-  behavior, and `force-for-plugin: true` makes the style outrank the prose style
-  of any other plugin.
+- **[ste-writing](output-styles/ste-writing.md)** — every ASD-STE100 Simplified
+  Technical English rule, plus a fixed response shape, applied to every answer.
+  It covers docs, READMEs, pull-request text, commit bodies, release notes,
+  comments, and chat. It does not cover code, identifiers, or command syntax.
+  Two flags shape it: `keep-coding-instructions: true` keeps the normal
+  software-engineering behavior, and `force-for-plugin: true` makes the style
+  outrank the prose style of any other plugin.
 
-The skill and the output style hold the same rules on purpose, and they differ
-in reach. The output style is the always-on route: select it, and every answer
-follows STE. The skill is the on-demand route: it triggers per task, so it fits
-a session that runs a different style but still needs one document in STE.
+The style is the only route on purpose. A skill held the same rules until
+2026-08-03, and it kept its own copy of a mode split that let general prose
+relax the STE dictionary. Two copies drift, and Claude resolved the
+contradiction arbitrarily. The style now carries every rule on its own.
+
+### Skills
+
+The plugin ships no skills today. See **Layout** to add one.
 
 ## Layout
 

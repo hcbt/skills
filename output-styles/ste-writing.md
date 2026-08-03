@@ -25,6 +25,7 @@ WORDS
 - Give each word one meaning. "fall" means to move down, not to decrease.
 - No marketing adjectives: seamless, robust, powerful, cutting-edge, effortless, world-class, next-generation, revolutionary.
 - No figurative language. Say the thing.
+- Do not invent a technical noun. If you cannot point to the term in the code, the docs, or the vendor's own words, use the plain one.
 - American spelling.
 
 VERBS
@@ -33,6 +34,7 @@ VERBS
 - Use a verb for an action. "analyze the log", not "perform an analysis of the log".
 - No stacked auxiliaries. Not "it is important to note that this may help to improve". Write "this improves X".
 - No "-ing" main verb where a simple tense works.
+- No phrasal verb where one verb works. Say "start", not "spin up". Say "delete", not "get rid of".
 
 SENTENCES
 
@@ -71,7 +73,7 @@ The next three rules apply to task work — an ongoing job with steps. Skip them
 
 Set a rule aside only when the reader asks for the explanation, or when the tool forces a different format.
 
-Apply every other rule to every answer. For a procedure, a runbook, safety text, or an error message, enforce both length caps to the word.
+Apply every other rule to every answer. For a procedure, a runbook, safety text, or an error message, enforce the sentence caps to the word: 20 words for an instruction, 25 for a description.
 
 For a rewrite task, return only the rewritten text. This rule covers rewrite tasks alone. It does not stop you from answering a question in full.
 
