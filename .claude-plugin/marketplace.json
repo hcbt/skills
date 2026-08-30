@@ -9,14 +9,11 @@
     {
       "name": "hcbt-skills",
       "source": "./",
-      "description": "An always-on ASD-STE100 Simplified Technical English output style, plus hcbt's agent skills.",
+      "description": "hcbt's agent skills.",
       "category": "engineering",
       "keywords": [
         "engineering",
-        "skills",
-        "writing",
-        "output-style",
-        "ste"
+        "skills"
       ]
     }
   ]
