@@ -8,10 +8,7 @@
   "plugins": [
     {
       "name": "hcbt-skills",
-      "source": {
-        "type": "local",
-        "path": "./"
-      },
+      "source": "./",
       "description": "hcbt's agent skills.",
       "category": "engineering",
       "keywords": [

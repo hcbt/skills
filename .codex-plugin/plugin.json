@@ -1,0 +1,13 @@
+{
+  "name": "hcbt-skills",
+  "version": "1.0.0",
+  "description": "hcbt's agent skills.",
+  "author": {
+    "name": "hcbt",
+    "url": "https://github.com/hcbt"
+  },
+  "homepage": "https://github.com/hcbt/skills",
+  "repository": "https://github.com/hcbt/skills",
+  "keywords": ["engineering", "skills"],
+  "skills": "./skills/"
+}

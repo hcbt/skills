@@ -1,27 +1,42 @@
 # hcbt/skills
 
-A Grok plugin marketplace with one plugin: **hcbt-skills**.
+A plugin marketplace with one plugin: **hcbt-skills**. Skills live under `skills/`
+and install into Claude Code, Grok, Codex, and anything else that reads
+[Agent Skills](https://agentskills.io).
 
-The repository root *is* the plugin. [`.grok-plugin/marketplace.json`](.grok-plugin/marketplace.json)
-lists a single entry whose source is `./`, so files under `skills/` install
-from one clone.
+The repository root *is* the plugin. Each harness has its own index pointing at
+`./`:
+
+| Harness | Index |
+| --- | --- |
+| Claude Code | [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) |
+| Grok | [`.grok-plugin/marketplace.json`](.grok-plugin/marketplace.json) |
+| Codex | [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json) and [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json) |
 
 ## Install
 
-Add the marketplace, then install the plugin:
+**Claude Code**
+
+```bash
+/plugin marketplace add hcbt/skills
+/plugin install hcbt-skills@hcbt
+```
+
+**Grok**
 
 ```bash
 grok plugin marketplace add hcbt/skills
-```
-
-```bash
 grok plugin install hcbt-skills --trust
 ```
 
-`hcbt` is the marketplace name. `hcbt-skills` is the plugin name.
+**Codex**
 
-To pick up a newly installed plugin, press `r` in the Plugins tab or start a
-new session.
+```bash
+codex plugin marketplace add hcbt/skills
+```
+
+Then install **hcbt-skills** from that marketplace. `hcbt` is the marketplace
+name. `hcbt-skills` is the plugin name.
 
 ## What the plugin ships
 
@@ -33,11 +48,14 @@ new session.
 ## Layout
 
 ```
-.grok-plugin/marketplace.json     the marketplace, listing one plugin
-skills/<name>/SKILL.md            one directory per skill
-skills/<name>/references/         optional supporting files for a skill
+.claude-plugin/marketplace.json    Claude Code marketplace
+.grok-plugin/marketplace.json      Grok marketplace
+.codex-plugin/plugin.json          Codex plugin manifest
+.agents/plugins/marketplace.json   Codex marketplace
+skills/<name>/SKILL.md             one directory per skill
+skills/<name>/references/          optional supporting files for a skill
 ```
 
 To add a skill, create `skills/<name>/SKILL.md` with `name` and `description`
-frontmatter. The description decides when Grok loads the skill, so write it
+frontmatter. The description decides when an agent loads the skill, so write it
 for the trigger, not for the reader.
