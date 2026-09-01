@@ -27,7 +27,8 @@ marketplace and set the `enabledPlugins` key. One marketplace, one plugin key.
 
 ### Skills
 
-The plugin ships no skills today. See **Layout** to add one.
+- **[project-bootstrap](skills/project-bootstrap/SKILL.md)** — devenv, AGENTS.md, and APM for a new non-frontend project.
+- **[project-bootstrap-frontend](skills/project-bootstrap-frontend/SKILL.md)** — the same, plus bun, TypeScript, oxlint, oxfmt, and anti-slop.
 
 ## Layout
 
