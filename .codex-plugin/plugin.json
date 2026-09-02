@@ -8,6 +8,7 @@
   },
   "homepage": "https://github.com/hcbt/skills",
   "repository": "https://github.com/hcbt/skills",
+  "license": "MIT",
   "keywords": ["engineering", "skills"],
   "skills": "./skills/"
 }
