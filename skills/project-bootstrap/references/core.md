@@ -1,4 +1,4 @@
-# devenv and APM
+# devenv and agents-nix
 
 Facts used by both bootstrap skills. Commands run in the project directory.
 
@@ -21,50 +21,51 @@ Starting `packages` list:
 ```nix
 packages = [
   pkgs.git
-  pkgs.apm-cli
 ];
 ```
 
-The nixpkgs attribute is `apm-cli`. The binary is `apm` or `apm-cli` depending on the pin. `devenv shell -- apm --version` or `devenv shell -- apm-cli --version`. Use whichever exists. If nixpkgs `apm-cli` is too old for git-longhand `alias:` or `--target grok-build`, overlay a newer build from GitHub. Do not curl the installer onto the host.
+## agents-nix
 
-## APM
+Add the module and three non-flake Skill Sources through devenv:
 
-After devenv has `apm` on PATH:
-
-1. `devenv shell -- apm init -y` (drop `-y` if this pin rejects it). That writes `apm.yml`.
-2. Set:
-
-```yaml
-targets:
-  - grok-build
-  - agent-skills
+```sh
+devenv inputs add agents-nix github:hcbt/agents-nix --follows nixpkgs
+devenv inputs add skills-emilkowalski github:emilkowalski/skills
+devenv inputs add skills-mattpocock github:mattpocock/skills
+devenv inputs add skills-ponytail github:DietrichGebert/ponytail
 ```
 
-A fresh tree has no harness markers. Without `targets`, `apm install` exits 2.
+Set `flake: false` on each `skills-*` input in `devenv.yaml`, then run `devenv update`. Keep agents-nix as a flake input and make its `nixpkgs` input follow this project's `nixpkgs`.
 
-3. `emilkowalski/skills` and `mattpocock/skills` both ship a directory named `prototype`. Discover the skill directory names from each repo at bootstrap time (do not hardcode a stale list). On each collection entry, set `skills:` to every name except `prototype`. Add path-scoped deps so the clash deploys under aliases:
+Merge this into the generated `devenv.nix`:
 
-```yaml
-dependencies:
-  apm:
-    - git: https://github.com/emilkowalski/skills.git
-      skills:
-        - emil-design-eng # plus every other emilkowalski skill except prototype
-    - git: https://github.com/emilkowalski/skills.git
-      path: skills/prototype
-      alias: emil-prototype
-    - git: https://github.com/mattpocock/skills.git
-      skills:
-        - tdd # plus every other mattpocock skill except prototype
-    - git: https://github.com/mattpocock/skills.git
-      path: skills/engineering/prototype
-      alias: matt-prototype
-    - git: https://github.com/DietrichGebert/ponytail.git
+```nix
+{ inputs, pkgs, ... }:
+
+{
+  imports = [ inputs.agents-nix.devenvModules.default ];
+
+  packages = [
+    pkgs.git
+  ];
+
+  agents.skills = {
+    emilkowalski = inputs.skills-emilkowalski;
+    mattpocock = inputs.skills-mattpocock;
+    ponytail = inputs.skills-ponytail;
+  };
+
+  # Agent Integrations are opt-in. Enable only the Agents the owner chooses.
+  # agents.antigravity-cli.enableSkillsIntegration = true;
+  # agents.claude-code.enableSkillsIntegration = true;
+  # agents.codex.enableSkillsIntegration = true;
+  # agents.grok.enableSkillsIntegration = true;
+  # agents.muse-code.enableSkillsIntegration = true;
+  # agents.opencode.enableSkillsIntegration = true;
+  # agents.pi-coding-agent.enableSkillsIntegration = true;
+}
 ```
 
-Replace the placeholder `skills:` names with the full discovered lists. An empty `skills:` list installs nothing. Ponytail has no `prototype` clash; install the repo as a whole.
+Pack skill ids are source-prefixed, so identically named skills do not collide. With every integration disabled, catalog evaluation writes no skill directory. Add `.agents/skills/` and `.claude/skills/` to `.gitignore` for the integrations an owner may enable later.
 
-4. `devenv shell -- apm install`
-5. Confirm `emil-prototype` and `matt-prototype` exist under the deployed skills root (`.agents/skills/` for `agent-skills`). Confirm there is no unaliased `prototype/` directory. If a collection still deployed one, the `skills:` subset is wrong; fix `apm.yml` and install again.
-
-Do not run `apm compile`. It writes root context files and would fight AGENTS.md.
+Run `devenv allow`, `devenv shell -- true`, and `devenv shell -- git --version`. The resulting `devenv.lock` pins agents-nix and every Skill Source.

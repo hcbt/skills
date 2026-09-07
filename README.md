@@ -42,7 +42,7 @@ name. `hcbt-skills` is the plugin name.
 
 ### Skills
 
-- **[project-bootstrap](skills/project-bootstrap/SKILL.md)** — devenv, AGENTS.md, and APM for a new non-frontend project.
+- **[project-bootstrap](skills/project-bootstrap/SKILL.md)** — devenv, AGENTS.md, and an agents-nix Skill Catalog for a new non-frontend project.
 - **[project-bootstrap-frontend](skills/project-bootstrap-frontend/SKILL.md)** — the same, plus bun, TypeScript, oxlint, oxfmt, and anti-slop.
 
 ## Layout
